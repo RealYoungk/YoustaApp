@@ -42,5 +42,10 @@ import { ApolloProvider } from "react-apollo-hooks";
 - 10.3 Recap<br>
 여태 했던 작업 리마인더 하였음, loaded client 상태를 가지고 preloading처리를 하였고 ApolloProvieder로 클라이언트를 넘겨주고, 클라이언트는 접속하였을때 서버통신없이 데이터를 보여주기 위해 asset, persist cache를 사용하고 Ionicon도 사용하여 아이콘 사용, preload함수를 사용한 이유는 비동기 처리를 하기 위해서, useEffect를 사용하여 처음 랜더링 될때만 리랜더링 시키고, preload가 끝나면 상태변화로 리랜더링 시켜서 클라이언트를 넘기고 view컴포넌트를 띄웠음.
 
-- 10.4 isLoggedIn part One
+- 10.4 isLoggedIn part One<br>
 로그인 상태를 만들고 null false true 값으로 통제함, 이 상태를 추가한 이유는 로그인에 따른 네비게이션 바를 나타내기 위해서임
+
+- 10.5 isLoggedIn part Two<br>
+isLoggedIn 상태를 제어하기 위해서 비동기 login logout함수를 만들었다. 위 함수는 AsyncStorage에 isLoggedIn키를 true나 false로 바꿔주고 상태변화까지 한다. 그리고 react-native에서 지원하는 TouchableOpacity컴포넌트를 사용해서 onPress 파라미터에 login logout 이벤트를 넘겨준다.
+로그인 로그아웃은 어디서든 가능하게 하게 해야하기때문에 context를 활용하여 전역상태로 리팩토링 할 예정이다.
+
