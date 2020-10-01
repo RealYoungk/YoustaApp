@@ -49,3 +49,23 @@ import { ApolloProvider } from "react-apollo-hooks";
 isLoggedIn 상태를 제어하기 위해서 비동기 login logout함수를 만들었다. 위 함수는 AsyncStorage에 isLoggedIn키를 true나 false로 바꿔주고 상태변화까지 한다. 그리고 react-native에서 지원하는 TouchableOpacity컴포넌트를 사용해서 onPress 파라미터에 login logout 이벤트를 넘겨준다.
 로그인 로그아웃은 어디서든 가능하게 하게 해야하기때문에 context를 활용하여 전역상태로 리팩토링 할 예정이다.
 
+- 10.6 AuthContext part One<br>
+로그인 상태를 전역적으로 관리하기 위해서 createContext, useContext, useState를 사용하였다 createContext를 사용하여 컨택스트를 생성하고 isloggedin상태와 login logout 이벤트를 가져와서 AuthContext.Provider를 사용하여 객체 형식으로 넘겨준다. 그 전역적인 객체를 받아서 useIsLoggedIn, useLogIn, useLogOut을 만들고 export 함. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
