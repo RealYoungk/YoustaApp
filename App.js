@@ -3,7 +3,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { AppLoading } from "expo";
 import { Asset } from "expo-asset";
 import * as Font from "expo-font";
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { persistCache } from "apollo-cache-persist";
@@ -33,7 +33,7 @@ export default function App() {
         ...apolloClientOptions,
       });
       const isLoggedIn = await AsyncStorage.getItem("isLoggedIn");
-      if (isLoggedIn === null || isLoggedIn === false) {
+      if (isLoggedIn === null || isLoggedIn === "false") {
         setIsLoggedIn(false);
       } else {
         setIsLoggedIn(true);
@@ -47,10 +47,49 @@ export default function App() {
   useEffect(() => {
     preLoad();
   }, []);
+
+  const logUserIn = async () => {
+    try {
+      await AsyncStorage.setItem("isLoggedIn", "true");
+      setIsLoggedIn(true);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  const logUserOut = async () => {
+    try {
+      await AsyncStorage.setItem("isLoggedIn", "false");
+      setIsLoggedIn(false);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return loaded && client && isLoggedIn !== null ? (
     <ApolloProvider client={client}>
       <ThemeProvider theme={styles}>
-        <View>{isLoggedIn === true ? <Text>I'm in</Text> : <Text>I'm out</Text>}</View>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          // flex o o o : flex-grow, flex-shrink, flex-basis 이며
+          // flex-grow 1은 균일 2는 앞에꺼 커짐 3은 더커짐
+          // flex-shrink 요소가 컨테이너보다 클때 사용
+          // flex-basis 컨텐츠 크기 지정하는거
+        >
+          {isLoggedIn === true ? (
+            <TouchableOpacity onPress={logUserOut}>
+              <Text>Log out</Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity onPress={logUserIn}>
+              <Text>Log in</Text>
+            </TouchableOpacity>
+          )}
+        </View>
       </ThemeProvider>
     </ApolloProvider>
   ) : (
