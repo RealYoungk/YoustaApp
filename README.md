@@ -16,6 +16,7 @@ Screens:
 
 ### Study Node 
 
+#### 10. APP: SETUP 
 - 10.0 Creating the Project<br>
 ```yarn global add expo-cli``` <br>
 ```expo init youstaApp``` <br>
