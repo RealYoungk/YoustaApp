@@ -52,6 +52,10 @@ isLoggedIn 상태를 제어하기 위해서 비동기 login logout함수를 만�
 - 10.6 AuthContext part One<br>
 로그인 상태를 전역적으로 관리하기 위해서 createContext, useContext, useState를 사용하였다 createContext를 사용하여 컨택스트를 생성하고 isloggedin상태와 login logout 이벤트를 가져와서 AuthContext.Provider를 사용하여 객체 형식으로 넘겨준다. 그 전역적인 객체를 받아서 useIsLoggedIn, useLogIn, useLogOut을 만들고 export 함. 
 
+- 10.7 AuthContext part Two
+앞서 만든 프로세스에 로그인인지 체크 하는동안 preload를 하지 못해서 사용자가 빈화면을 보는 치명적인 단점이 있었다. 그래서 app.js에서 지웠던 상태를 다시 만들고 context로 상태를 넘겨주는 방식으로 변경 하였다. 
+ps. Expo 앱이 강제종료 되는 이슈가 있었음, 컴터 폰 재부팅하고 캐시파일 다 지우고 일단 다시 돌아가긴함, 에러의 원인은 분명하진 않지만 View style 에서 잘못된 css를 전달 해 준게 원인인것 같음.
+
 
 
 
