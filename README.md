@@ -62,6 +62,17 @@ justify-contents : center 중앙정렬
 align-items : center 중앙정렬
 ```
 
+#### 11 APP: NAVIGATION
+
+- 11.0 Introduction To Navigation
+앞으로 네비게이션을 구현할 예정인데, 네비게이션은 Tab, Stack, Drawer 네비게이션으로 구성된다.
+탭은 하단에서 눌러서 사용하는 네비게이션
+스택은 내가 보던 화면이 밑으로 내려가고 새로운 카드가 화면 상단에 뜨는것
+드로워는 좌측상단에 있는 네비게이터다.
+
+
+
+
 
 
 
