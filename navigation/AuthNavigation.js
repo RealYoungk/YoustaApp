@@ -1,20 +1,24 @@
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
-import Signup from "../screens/Auth/Signup";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import AuthHome from "../screens/Auth/AuthHome";
 import Confirm from "../screens/Auth/Comfirm";
 import Login from "../screens/Auth/Login";
-import AuthHome from "../screens/Auth/AuthHome";
+import Signup from "../screens/Auth/Signup";
 
-const AuthNavigation = createStackNavigator(
-  {
-    AuthHome,
-    Signup,
-    Login,
-    Confirm,
-  },
-  {
-    headerMode: "none",
-  }
-);
+const Stack = createStackNavigator();
 
-export default createAppContainer(AuthNavigation);
+export default () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName={AuthHome} headerMode={"none"}>
+        <>
+          <Stack.Screen name="AuthHome" component={AuthHome} />
+          <Stack.Screen name="Confirm" component={Confirm} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Signup" component={Signup} />
+        </>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
