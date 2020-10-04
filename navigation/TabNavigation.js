@@ -6,6 +6,7 @@ import Home from "../screens/Tabs/Home";
 import Notifications from "../screens/Tabs/Notifications";
 import Profile from "../screens/Tabs/Profile";
 import Search from "../screens/Tabs/Search";
+import MessagesLink from "../components/MessagesLink";
 
 const Stack = createStackNavigator();
 const stackFactory = (initialRoute, name, customConfig) => {
@@ -26,11 +27,7 @@ export default () => {
         {() =>
           stackFactory(Home, "Home", {
             title: "Home",
-            headerRight: () => (
-              <TouchableOpacity>
-                <Text>Hello</Text>
-              </TouchableOpacity>
-            ),
+            headerRight: () => <MessagesLink />,
           })
         }
       </BottomTab.Screen>
@@ -38,11 +35,7 @@ export default () => {
         {() =>
           stackFactory(Notifications, "Notifications", {
             title: "Notifications",
-            headerRight: () => (
-              <TouchableOpacity>
-                <Text>Hello</Text>
-              </TouchableOpacity>
-            ),
+            headerRight: () => <MessagesLink />,
           })
         }
       </BottomTab.Screen>
@@ -61,11 +54,7 @@ export default () => {
         {() =>
           stackFactory(Profile, "Profile", {
             title: "Profile",
-            headerRight: () => (
-              <TouchableOpacity>
-                <Text>Hello</Text>
-              </TouchableOpacity>
-            ),
+            headerRight: () => <MessagesLink />,
           })
         }
       </BottomTab.Screen>
@@ -73,11 +62,7 @@ export default () => {
         {() =>
           stackFactory(Search, "Search", {
             title: "Search",
-            headerRight: () => (
-              <TouchableOpacity>
-                <Text>Hello</Text>
-              </TouchableOpacity>
-            ),
+            headerRight: () => <MessagesLink />,
           })
         }
       </BottomTab.Screen>
