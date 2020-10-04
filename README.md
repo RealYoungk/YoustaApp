@@ -77,7 +77,14 @@ import { createStackNavigator } from "react-navigation-stack";
 ```
 ref : https://reactnavigation.org/docs/4.x/hello-react-navigation/
 
-
+- 11.2 Tabs Navigation
+와.. 매우매우 힘들었음 강의에서 사용한 네비게이터가 다 버전 업그레이드가 되어서 다시 설치하고 레퍼런스 참고해서 사용법도 다 달라서 힘들었음, 잘 모르지만 느낌적으로 봤을때 컴포넌트 느낌으로 짤수있게 바뀐것 같다. 
+11.1에서 사용한 네비게이터는 안썼고 자체적으로 레퍼런스 참고해서 작성함
+```
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
+```
 
 
 
