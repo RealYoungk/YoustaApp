@@ -115,6 +115,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 ```import { useNavigation } from "@react-navigation/native";```
 
 
+- 11.6 Navigation Conclusions
+리액트는 네비게이터가 유연하지 않아서 큰 단점이다. 그래서프로잭트 설계시 요구사항을 확실히 받고 설계를 잘해서 네비게이터 부터 만드는것을 추천한다.
+
 
 
 
