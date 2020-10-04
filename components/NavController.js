@@ -2,6 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { useIsLoggedIn } from "../AuthContext";
 import AuthNavigation from "../navigation/AuthNavigation";
+import MainNavigation from "../navigation/MainNavigation";
 import TabNavigation from "../navigation/TabNavigation";
 
 export default () => {
@@ -10,12 +11,10 @@ export default () => {
   return (
     <View style={{ flex: 1 }}>
       {isLoggedIn ? (
-        <TabNavigation />
+        <MainNavigation />
       ) : (
+        // <TabNavigation />
         <AuthNavigation />
-        // <TouchableOpacity onPress={logIn}>
-        //   <Text>Log in</Text>
-        // </TouchableOpacity>
       )}
     </View>
   );
