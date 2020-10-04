@@ -86,7 +86,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 ```
 
-
+- 11.3 Photo Navigation<br>
+ 네비게이션의 흐름은 다음과 같다. 
+ > 0. 메인 네비는 스택 네비게이션이다.
+ > 1. 메인 네비게이션에서 탭 네비게이션과 포토 네비게이션 두개를 자식으로 가진다. (탭 네비가 디폴트)
+ > 2. 텝 네비에서 ADD 버튼을 누르면 listener를 통해 Photo 네비로 이동
+ 4.x 네비에서 5.x네비로 넘어오면서 컴포넌트 형식으로 JSX가 바뀐게 느껴진다.(가독성이 더 좋은듯)
 
 
 
