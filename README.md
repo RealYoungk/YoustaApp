@@ -109,6 +109,10 @@ import { createStackNavigator } from "@react-navigation/stack";
         }
 </BottomTab.Screen>
  ```
+ 
+ - 11.5 Message Navigation part Two<br>
+ 메세지 네비게이터를 만들었움. 메세지 네비게이터를 추가하기 위해 메인에 메세지 네비게이터가 있다는것을 알려주고, 탭 네비게이터에서 headerRight옵션을 사용하여 MessageLink컴포넌트를 콜백하고 그 컴포넌트에서는 useNavigation이라는 훅을 사용하여 메세지 네비게이터로 이동하였다.
+```import { useNavigation } from "@react-navigation/native";```
 
 
 
