@@ -1,12 +1,20 @@
-import { View } from "react-native";
+import { TouchableOpacity, View, Text } from "react-native";
 import React from "react";
-
-import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "../screens/Home";
-import Notifications from "../screens/Notifications";
-import Profile from "../screens/Profile";
-import Search from "../screens/Search";
+import Home from "../screens/Tabs/Home";
+import Notifications from "../screens/Tabs/Notifications";
+import Profile from "../screens/Tabs/Profile";
+import Search from "../screens/Tabs/Search";
+
+const Stack = createStackNavigator();
+const stackFactory = (initialRoute, name, customConfig) => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name={name} component={initialRoute} options={{ ...customConfig }} />
+    </Stack.Navigator>
+  );
+};
 
 const BottomTab = createBottomTabNavigator();
 
@@ -14,8 +22,30 @@ export default () => {
   return (
     // <NavigationContainer>
     <BottomTab.Navigator initialRouteName="Home" tabBarOptions={{ labelPosition: "beside-icon" }}>
-      <BottomTab.Screen name="HOME" component={Home} />
-      <BottomTab.Screen name="NOTIFICATION" component={Notifications} />
+      <BottomTab.Screen name="HOME">
+        {() =>
+          stackFactory(Home, "Home", {
+            title: "Home",
+            headerRight: () => (
+              <TouchableOpacity>
+                <Text>Hello</Text>
+              </TouchableOpacity>
+            ),
+          })
+        }
+      </BottomTab.Screen>
+      <BottomTab.Screen name="NOTIFICATION">
+        {() =>
+          stackFactory(Notifications, "Notifications", {
+            title: "Notifications",
+            headerRight: () => (
+              <TouchableOpacity>
+                <Text>Hello</Text>
+              </TouchableOpacity>
+            ),
+          })
+        }
+      </BottomTab.Screen>
       <BottomTab.Screen
         name="ADD"
         component={View}
@@ -27,8 +57,30 @@ export default () => {
         })}
       />
 
-      <BottomTab.Screen name="PROFILE" component={Profile} />
-      <BottomTab.Screen name="SEARCH" component={Search} />
+      <BottomTab.Screen name="PROFILE">
+        {() =>
+          stackFactory(Profile, "Profile", {
+            title: "Profile",
+            headerRight: () => (
+              <TouchableOpacity>
+                <Text>Hello</Text>
+              </TouchableOpacity>
+            ),
+          })
+        }
+      </BottomTab.Screen>
+      <BottomTab.Screen name="SEARCH">
+        {() =>
+          stackFactory(Search, "Search", {
+            title: "Search",
+            headerRight: () => (
+              <TouchableOpacity>
+                <Text>Hello</Text>
+              </TouchableOpacity>
+            ),
+          })
+        }
+      </BottomTab.Screen>
     </BottomTab.Navigator>
     // </NavigationContainer>
   );
