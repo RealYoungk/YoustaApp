@@ -134,14 +134,14 @@ import { createStackNavigator } from "@react-navigation/stack";
 로그인 인풋에 레퍼런스를 참고해서 여러 옵션을 주었다.
 ```
 onChangeText={onChange}
-      keyboardType={keyboardType}
-      placeholder={placeholder}
-      autoCapitalize={autoCapitalize}
-      value={value}
-      returnKeyType={returnKeyType}
-      onEndEditing={onEndEditing}
-      autoCorrect={autoCorrect}
-      ```
+keyboardType={keyboardType}
+placeholder={placeholder}
+autoCapitalize={autoCapitalize}
+value={value}
+returnKeyType={returnKeyType}
+onEndEditing={onEndEditing}
+autoCorrect={autoCorrect}
+```
 
 
 
