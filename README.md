@@ -143,7 +143,16 @@ onEndEditing={onEndEditing}
 autoCorrect={autoCorrect}
 ```
 
+- 12.4 Login part Two<br>
+백엔드의 requestSecret을 연동한다. react-apollo-hooks 완전 편한듯,,
+그리고 로그인 시도시 중복으로 버튼을 handle 하지 않는다던지 여러 옵션을 주었음
 
+
+- 12.5 Login part Three<br>
+백엔드에 요청이 제대로 가지 않는 네트워크 에러가 발생하였음, 로컬에 실행중인 서버를 안전하게 외부에서 접근 가능하게 하는 ngrok을 활용하여 에러를 해결
+```
+ngrok 은 NAT와 방화벽 뒤에 있는 로컬 서버 를 안전한 터널을 통해 공개 인터넷에 노출시켜 주는 도구라고 설명되어 있습니다. 즉, 포트 포워딩과 같은 네트워크 환경 설정 변경없이 로컬에 실행중인 서버를 안전하게 외부에서 접근 가능하도록 해주는 도구
+```
 
 
 
