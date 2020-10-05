@@ -143,6 +143,9 @@ onEndEditing={onEndEditing}
 autoCorrect={autoCorrect}
 ```
 
+- 12.4 Login part Two<br>
+백엔드의 requestSecret을 연동한다. react-apollo-hooks 완전 편한듯,,
+그리고 로그인 시도시 중복으로 버튼을 handle 하지 않는다던지 여러 옵션을 주었음
 
 
 
