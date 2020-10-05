@@ -127,6 +127,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 - 12.1 Auth Components part One <br>
 리액트의 장점은 컴포넌트 재사용인데, auth에 버튼이나 입력 칸 같은것을 재사용을 많이 하기 때문에 컴포넌트를 만들었다. 컴포넌트는 레퍼런스를 참고해서 만들면 되고, propTypes를 활용하여 타입체크도 해주어야 한다.
 
+- 12.2 Auth Components part Two<br>
+입력하는 입력란에 대한 컴포넌트를 만들었다면 그 입력란의 상태변화에 대응하는 useInput이라는 훅을 만들었다.
+
 
 
 
