@@ -130,6 +130,18 @@ import { createStackNavigator } from "@react-navigation/stack";
 - 12.2 Auth Components part Two<br>
 입력하는 입력란에 대한 컴포넌트를 만들었다면 그 입력란의 상태변화에 대응하는 useInput이라는 훅을 만들었다.
 
+- 12.3 Login part One<br>
+로그인 인풋에 레퍼런스를 참고해서 여러 옵션을 주었다.
+```
+onChangeText={onChange}
+      keyboardType={keyboardType}
+      placeholder={placeholder}
+      autoCapitalize={autoCapitalize}
+      value={value}
+      returnKeyType={returnKeyType}
+      onEndEditing={onEndEditing}
+      autoCorrect={autoCorrect}
+      ```
 
 
 
