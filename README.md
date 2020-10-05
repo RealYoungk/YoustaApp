@@ -119,8 +119,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 리액트는 네비게이터가 유연하지 않아서 큰 단점이다. 그래서프로잭트 설계시 요구사항을 확실히 받고 설계를 잘해서 네비게이터 부터 만드는것을 추천한다.
 
 
+#### 12. APP: AUTH
 
-
+- 12.0 AuthHome <br>
+본격적으로 로그인 구현에 앞서 페이지 디자인을 하였다. Styled.Image를 활용하여 이미지를 가져오고 앞서 만든 라우팅 기능이 되도록 하였다. 여기서 새로 알게된 점은 Constants.js에서 Demensions.get("screen")을 활용하여 넓이와 높이를 가져오고 styled 에서 ${Constants.width} 로 값을 가져올 수 있다는 것, 그리고 styles를 전역적으로 export를 하고, props.theme.blueColor와 같은 방법으로 CSS를 가져올수 있다는것이다.
 
 
 
