@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import Constants from "../screens/Constants";
+import constants from "../screens/constants";
 
 const Touchable = styled.TouchableOpacity``;
 const Container = styled.View`
@@ -9,7 +9,7 @@ const Container = styled.View`
   padding: 10px;
   margin: 0px 50px;
   border-radius: 4px;
-  width: ${Constants.width / 2.5};
+  width: ${constants.width / 2};
 `;
 const Text = styled.Text`
   color: white;
