@@ -20,7 +20,7 @@ const Text = styled.Text``;
 export default ({ navigation }) => {
   const emailInput = useInput("");
   const [loading, setLoading] = useState(false);
-  const requestSecret = useMutation(LOG_IN, {
+  const [requestSecretMutation] = useMutation(LOG_IN, {
     variables: {
       email: emailInput.value,
     },
@@ -37,9 +37,14 @@ export default ({ navigation }) => {
     }
     try {
       setLoading(true);
-      await requestSecret();
-      Alert.alert("Check Your Email");
-      navigation.navigate("Confirm");
+      const {
+        data: { requestSecret },
+      } = await requestSecretMutation();
+      if (requestSecret) {
+        Alert.alert("Check Your Email");
+        navigation.navigate("Confirm");
+        return;
+      }
     } catch (e) {
       Alert.alert("Can't log in now");
     } finally {
@@ -54,7 +59,7 @@ export default ({ navigation }) => {
           placeholder="Email"
           keyboardType="eamil-address"
           returnKeyType="send"
-          onEndEdit={handleLogin}
+          onSubmitEditing={handleLogin}
           autoCorrect={false}
         />
         <AuthButton text="Log in" onPress={handleLogin} loading={loading} />
