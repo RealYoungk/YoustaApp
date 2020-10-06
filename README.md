@@ -159,7 +159,8 @@ autoCorrect={autoCorrect}
 ngrok 은 NAT와 방화벽 뒤에 있는 로컬 서버 를 안전한 터널을 통해 공개 인터넷에 노출시켜 주는 도구라고 설명되어 있습니다. 즉, 포트 포워딩과 같은 네트워크 환경 설정 변경없이 로컬에 실행중인 서버를 안전하게 외부에서 접근 가능하도록 해주는 도구
 ```
 
-
+- 12.6 Confirm<br>
+비밀번호를 확인하는 페이지를 만들었다. 전반적으로 login페이지와 유사하며, 클릭시 AuthContext에 jwt토큰을 저장하고 isloggined 가 true 가 되어서 홈 화면이 나타난다. login페이지에서 email 값을 넘기기 위해서 navigation을 활용하였고, confirm에서 이메일 값을 받아오기 위해서 route.param을 활용하였다.
 
 
 
