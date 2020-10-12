@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Image } from "react-native";
+import Swiper from "react-native-swiper";
 
 const Container = styled.View``;
 
@@ -42,6 +43,11 @@ const Post = ({ user, location }) => {
           </Touchable>
         </HeaderUserContainer>
       </Header>
+      <Swiper>
+        <Image style={{ height: 40, width: 40, borderRadius: 20 }} source={{ uri: user.avatar }} />
+        <Image style={{ height: 40, width: 40, borderRadius: 20 }} source={{ uri: user.avatar }} />
+        <Image style={{ height: 40, width: 40, borderRadius: 20 }} source={{ uri: user.avatar }} />
+      </Swiper>
     </Container>
   );
 };

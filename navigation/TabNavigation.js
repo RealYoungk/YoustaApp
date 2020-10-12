@@ -32,7 +32,7 @@ export default () => {
   return (
     // <NavigationContainer>
     <BottomTab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Search"
       tabBarOptions={{
         labelPosition: "beside-icon",
         showLabel: false,
@@ -99,9 +99,9 @@ export default () => {
       <BottomTab.Screen name="SEARCH">
         {() =>
           stackFactory(Search, "Search", {
-            title: "Search",
+            // title: "Searchhhh",
             headerRight: () => <MessagesLink />,
-            headerTitle: () => <NavIcon name="logo-instagram" size={36} />,
+            // headerTitle: () => <NavIcon name="logo-instagram" size={36} />,
           })
         }
       </BottomTab.Screen>
