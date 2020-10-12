@@ -170,3 +170,6 @@ ngrok 은 NAT와 방화벽 뒤에 있는 로컬 서버 를 안전한 터널을 �
 
 - #13.2 TabBar, Styles, Loader<br>
 ActivityIndicator를 활용하여 Loader 컴포넌트 구현, TabBar, Styles 스타일 수정
+
+- #14.0 Apollo Context <br>
+클라이언트를 요청할때 jwt토큰을 추가해서 요청을 보내도록 수정함, 그런데 토큰을 headers 로 보내게 되면 App이 마운트 되었을때만 토큰이 전달되는 상황이 발생했음, 그래서 request를 활용하여 App의 마운트 여부와 관계없이 작동이 되도록 하였음
