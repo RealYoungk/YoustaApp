@@ -9,11 +9,18 @@ import Profile from "../screens/Tabs/Profile";
 import Search from "../screens/Tabs/Search";
 import MessagesLink from "../components/MessagesLink";
 import NavIcon from "../components/NavIcon";
+import { stackStyles } from "./config";
 
 const Stack = createStackNavigator();
 const stackFactory = (initialRoute, name, customConfig) => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          ...stackStyles,
+        },
+      }}
+    >
       <Stack.Screen name={name} component={initialRoute} options={{ ...customConfig }} />
     </Stack.Navigator>
   );
@@ -26,10 +33,15 @@ export default () => {
     // <NavigationContainer>
     <BottomTab.Navigator
       initialRouteName="Home"
-      tabBarOptions={{ labelPosition: "beside-icon", showLabel: false }}
+      tabBarOptions={{
+        labelPosition: "beside-icon",
+        showLabel: false,
+        tabStyle: {
+          backgroundColor: "#FAFAFA",
+        },
+      }}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused }) => {
-          console.log(route);
           let iconName = Platform.OS === "ios" ? "ios-" : "md-";
           if (route.name === "HOME") {
             iconName += "home";
@@ -42,7 +54,7 @@ export default () => {
           } else if (route.name === "PROFILE") {
             iconName += "person";
           }
-          return <NavIcon name={iconName} size={30} />;
+          return <NavIcon name={iconName} size={30} focused={focused} />;
         },
       })}
     >

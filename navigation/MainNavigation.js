@@ -4,13 +4,22 @@ import { createStackNavigator } from "@react-navigation/stack";
 import TabNavigation from "./TabNavigation";
 import PhotoNavigation from "./PhotoNavigation";
 import MessageNavigation from "./MessageNavigation";
+import { stackStyles } from "./config";
 
 const Stack = createStackNavigator();
 
 export default () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="TabNavigation" headerMode="none">
+      <Stack.Navigator
+        initialRouteName="TabNavigation"
+        headerMode="none"
+        screenOptions={{
+          headerStyle: {
+            ...stackStyles,
+          },
+        }}
+      >
         {/* <Stack.Navigator> */}
         <Stack.Screen name="TabNavigation" component={TabNavigation} />
         <Stack.Screen name="PhotoNavigation" component={PhotoNavigation} />
