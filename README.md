@@ -168,3 +168,5 @@ ngrok 은 NAT와 방화벽 뒤에 있는 로컬 서버 를 안전한 터널을 �
 - #13.1 TabIcons part Two<br>
 앞선 facebook, google로 로그인 연동은 실패하였다. 프로젝트에 큰 지장이 없을것같아 나중으로 미루고 계속 진행하였다. 이번엔 하단 탭바를 아이콘으로 변경하는 작업을 하였다. route를 활용하여 페이지명을 받아오고 tabBarIcon 옵션, Ionicons라이브러리를 활용하여, 탭바에 아이콘을 추가하였음.
 
+- #13.2 TabBar, Styles, Loader<br>
+ActivityIndicator를 활용하여 Loader 컴포넌트 구현, TabBar, Styles 스타일 수정
