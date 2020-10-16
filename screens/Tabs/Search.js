@@ -1,6 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { RefreshControl, ScrollView } from "react-native";
 import styled from "styled-components";
 import SearchBar from "../../components/SearchBar";
+import PropTypes from "prop-types";
+import { gql } from "apollo-boost";
+import { useQuery } from "react-apollo-hooks";
+import Loader from "../../components/Loader";
+
+export const SEARCH = gql`
+  query search($term: String!) {
+    searchPost(term: $term) {
+      id
+      vod
+      likeCount
+      commentCount
+    }
+  }
+`;
 
 const View = styled.View`
   justify-content: center;
@@ -12,18 +28,50 @@ const Text = styled.Text``;
 
 export default ({ navigation, route }) => {
   const [term, setTerm] = useState("");
+  const [shouldFetch, setShouldFetch] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+  const { data, loading, refetch } = useQuery(SEARCH, {
+    variables: {
+      term: term,
+    },
+    skip: !shouldFetch,
+  });
   const onChange = (text) => {
     setTerm(text);
+    setShouldFetch(false);
   };
-  const onSubmit = () => {};
+  const onSubmit = () => {
+    // console.log("Submit");
+    setShouldFetch((l) => !l);
+    setRefreshing((l) => !l);
+  };
+
+  const onRefresh = async () => {
+    setShouldFetch((l) => !l);
+  };
+  useEffect(() => {
+    const handleData = async () => {
+      try {
+        await refetch();
+      } catch (error) {
+      } finally {
+      }
+    };
+    if (refreshing) {
+      handleData();
+    }
+  }, [shouldFetch]);
 
   navigation.setOptions({
-    headerTitle: () => <SearchBar onChange={onChange} value={term} onSubmit={onSubmit} />,
+    headerTitle: () => (
+      <SearchBar onChange={onChange} value={term} onSubmit={onSubmit} shouldFetch={shouldFetch} />
+    ),
   });
 
-  return (
-    <View>
-      <Text>Search</Text>
-    </View>
-  );
+  console.log(data, loading);
+  return <ScrollView>{loading ? <Loader /> : null}</ScrollView>;
+};
+
+SearchBar.propTypes = {
+  shouldFetch: PropTypes.bool.isRequired,
 };
