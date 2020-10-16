@@ -180,5 +180,10 @@ ScrollView를 활용하여 아래로 드래그 할때마다 새로운 데이터�
 - 15.0 Post Component Header<br>
 포스트 컴포넌트의 헤더 만드는중,, 데이터를 먼저 띄우고 디자인하고,,
 
+- 15.2 Finishing Post Component<br>
+기존 모듈 활용해서 post 컴포넌트 완성.
+
 - 16.0 Search as HeaderTitle part One<br>
 검색란에서 검색란의 값을 넘겨주고 상태관리하는게 문제였음, 리액트의 navigation, route파라미터를 이용하여 타이틀에 검색 컴포넌트를 넣어서 검색 헤더를 만들었다.
+
+
