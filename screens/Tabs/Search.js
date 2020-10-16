@@ -42,23 +42,25 @@ export default ({ navigation, route }) => {
   };
   const onSubmit = () => {
     // console.log("Submit");
-    setShouldFetch((l) => !l);
-    setRefreshing((l) => !l);
+    setShouldFetch(true);
+    setRefreshing(true);
   };
 
-  const onRefresh = async () => {
-    setShouldFetch((l) => !l);
-  };
+  // const onRefresh = () => {
+  //   setShouldFetch(false);
+  // };
   useEffect(() => {
     const handleData = async () => {
       try {
         await refetch();
       } catch (error) {
+        console.log(error);
       } finally {
       }
     };
     if (refreshing) {
       handleData();
+      setRefreshing(false);
     }
   }, [shouldFetch]);
 
@@ -68,10 +70,5 @@ export default ({ navigation, route }) => {
     ),
   });
 
-  console.log(data, loading);
   return <ScrollView>{loading ? <Loader /> : null}</ScrollView>;
-};
-
-SearchBar.propTypes = {
-  shouldFetch: PropTypes.bool.isRequired,
 };
