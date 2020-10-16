@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Image } from "react-native";
-import Swiper from "react-native-swiper";
+import { gql } from "apollo-boost";
 import constants from "../screens/constants";
 import { Ionicons } from "@expo/vector-icons";
+import styles from "../styles";
+import { useMutation } from "react-apollo-hooks";
 
-const Container = styled.View``;
+const Like_POST = gql`
+  mutation toggelLike($postId: String!) {
+    toggleLike(postId: $postId)
+  }
+`;
+
+const Container = styled.View`
+  margin-bottom: 40px;
+`;
 
 const Header = styled.View`
   padding: 15px;
@@ -49,9 +59,35 @@ const CommentCount = styled.Text`
   font-size: 12px;
 `;
 
-const Post = ({ user, location, vod, id, likeCount, caption, comments = [] }) => {
+const Post = ({
+  user,
+  location,
+  vod,
+  id,
+  likeCount: likeCountProp,
+  caption,
+  comments = [],
+  isLiked: isLikedProp,
+}) => {
+  const [isLiked, setIsLiked] = useState(isLikedProp);
+  const [likeCount, setLikeCount] = useState(likeCountProp);
+  const [toggleLikeMutation] = useMutation(Like_POST, {
+    variables: {
+      postId: id,
+    },
+  });
   const thumbnail = `http://img.youtube.com/vi/${vod.substr(32, 11)}/0.jpg`;
-
+  const handleLike = async () => {
+    if (isLiked === true) {
+      setLikeCount((like) => like - 1);
+    } else {
+      setLikeCount((like) => like + 1);
+    }
+    try {
+      setIsLiked((p) => !p);
+      await toggleLikeMutation();
+    } catch (e) {}
+  };
   return (
     <Container>
       <Header>
@@ -79,8 +115,18 @@ const Post = ({ user, location, vod, id, likeCount, caption, comments = [] }) =>
           <Touchable>
             <IconContainer>
               <Ionicons
+                onPress={handleLike}
+                color={isLiked ? styles.redColor : styles.blackColor}
                 size={28}
-                name={Platform.OS === "ios" ? "ios-heart-empty" : "md-heart-empty"}
+                name={
+                  Platform.OS === "ios"
+                    ? isLiked
+                      ? "ios-heart"
+                      : "ios-heart-empty"
+                    : isLiked
+                    ? "md-heart"
+                    : "md-heart-empty"
+                }
               />
             </IconContainer>
           </Touchable>
