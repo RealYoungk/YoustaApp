@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Image } from "react-native";
 import Swiper from "react-native-swiper";
+import constants from "../screens/constants";
+import { Ionicons } from "@expo/vector-icons";
 
 const Container = styled.View``;
 
@@ -26,7 +28,30 @@ const Location = styled.Text`
   font-size: 12px;
 `;
 
-const Post = ({ user, location }) => {
+const IconsContainer = styled.View`
+  margin-bottom: 5px;
+  flex-direction: row;
+`;
+const IconContainer = styled.View`
+  margin-right: 10px;
+`;
+
+const InfoContainer = styled.View`
+  padding: 10px;
+`;
+
+const Caption = styled.Text`
+  margin: 3px 0px;
+`;
+
+const CommentCount = styled.Text`
+  opacity: 0.5;
+  font-size: 12px;
+`;
+
+const Post = ({ user, location, vod, id, likeCount, caption, comments = [] }) => {
+  const thumbnail = `http://img.youtube.com/vi/${vod.substr(32, 11)}/0.jpg`;
+
   return (
     <Container>
       <Header>
@@ -43,11 +68,43 @@ const Post = ({ user, location }) => {
           </Touchable>
         </HeaderUserContainer>
       </Header>
-      <Swiper>
-        <Image style={{ height: 40, width: 40, borderRadius: 20 }} source={{ uri: user.avatar }} />
-        <Image style={{ height: 40, width: 40, borderRadius: 20 }} source={{ uri: user.avatar }} />
-        <Image style={{ height: 40, width: 40, borderRadius: 20 }} source={{ uri: user.avatar }} />
-      </Swiper>
+
+      <Image
+        key={{ id }}
+        style={{ width: constants.width, height: constants.height / 3.5 }}
+        source={{ uri: thumbnail }}
+      />
+      <InfoContainer>
+        <IconsContainer>
+          <Touchable>
+            <IconContainer>
+              <Ionicons
+                size={28}
+                name={Platform.OS === "ios" ? "ios-heart-empty" : "md-heart-empty"}
+              />
+            </IconContainer>
+          </Touchable>
+          <Touchable>
+            <IconContainer>
+              <Ionicons
+                size={28}
+                name={Platform.OS === "ios" ? "ios-chatbubbles" : "md-chatbubbles"}
+              />
+            </IconContainer>
+          </Touchable>
+        </IconsContainer>
+
+        <Touchable>
+          <Bold>{likeCount === 1 ? `1 like` : `${likeCount} likes`}</Bold>
+        </Touchable>
+        <Caption>
+          <Bold>{user.username}</Bold>
+          {caption}
+        </Caption>
+        <Touchable>
+          <CommentCount>See all {comments.length} comments</CommentCount>
+        </Touchable>
+      </InfoContainer>
     </Container>
   );
 };

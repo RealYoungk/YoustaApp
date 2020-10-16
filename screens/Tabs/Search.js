@@ -13,12 +13,14 @@ const Text = styled.Text``;
 
 export default ({ navigation, route }) => {
   const { term, setTerm } = useState("");
-  onChange = (text) => {
+  const onChange = (text) => {
     setTerm(text);
   };
+
   navigation.setOptions({
     headerTitle: () => <SearchBar onChange={onChange} value={term} onSubmit={() => {}} />,
   });
+
   return (
     <View>
       <Text>Search</Text>
