@@ -100,7 +100,7 @@ export default () => {
         {() =>
           stackFactory(Search, "Search", {
             // title: "Searchhhh",
-            headerRight: () => <MessagesLink />,
+            // headerRight: () => <MessagesLink />,
             // headerTitle: () => <NavIcon name="logo-instagram" size={36} />,
           })
         }
