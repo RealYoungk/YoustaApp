@@ -192,3 +192,7 @@ ScrollView를 활용하여 아래로 드래그 할때마다 새로운 데이터�
 - 16.1 Search as HeaderTitle part Two<br>
 react 4.x 에서 5.x로 업그레이드 되면서 강의와는 다르게 코드를 작성해야 해서 좀 힘들었음. 강의에서는 클래스형 컴포넌트를 이용하여 코드를 작성 하였지만 본인은 함수형 컴포넌트를 활용하여 코딩중,,
 
+- 16.2 Search Query<br>
+검색은  shouldFetch, refreshing 상태에 의해 리랜더링 되는데, 타이핑을 치는동안은 shouldfetch를 false로 주다가 서브밋 이벤트가 들어오는 순간 fetch는 ture, refresh도 true가 된다. fetch상태가 바뀜에 따라 useEffect 함수에 의해 리패치가 진행된다. 리패치가 완료되면 refreshing을 false로 바꾸고 나온다.
+코드를 임의대로 바꿔서 나중에 문제가 생길지도 모르겠다.
+
