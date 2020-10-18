@@ -6,25 +6,25 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../screens/Tabs/Home";
 import Notifications from "../screens/Tabs/Notifications";
 import Profile from "../screens/Tabs/Profile";
-import Search from "../screens/Tabs/Search";
+import Search from "../screens/Tabs/Search/SearchContainer";
+import Detail from "../screens/Detail";
 import MessagesLink from "../components/MessagesLink";
 import NavIcon from "../components/NavIcon";
-import { stackStyles } from "./config";
 
 const Stack = createStackNavigator();
-const stackFactory = (initialRoute, name, customConfig) => {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerStyle: {
-          ...stackStyles,
-        },
-      }}
-    >
-      <Stack.Screen name={name} component={initialRoute} options={{ ...customConfig }} />
-    </Stack.Navigator>
-  );
-};
+// const stackFactory = (initialRoute, name, customConfig) => {
+//   return (
+//     <Stack.Navigator
+//       screenOptions={{
+//         headerStyle: {
+//           ...stackStyles,
+//         },
+//       }}
+//     >
+//       <Stack.Screen name={name} component={initialRoute} options={{ ...customConfig }} />
+//     </Stack.Navigator>
+//   );
+// };
 
 const BottomTab = createBottomTabNavigator();
 
@@ -59,22 +59,51 @@ export default () => {
       })}
     >
       <BottomTab.Screen name="HOME">
-        {() =>
+        {(props) => (
+          <Stack.Navigator {...props}>
+            <Stack.Screen
+              name="Home"
+              component={Home}
+              options={{
+                title: "Home",
+                headerRight: () => <MessagesLink />,
+                headerTitle: () => <NavIcon name="logo-instagram" size={36} />,
+              }}
+            />
+            <Stack.Screen name="Detail" component={Detail} />
+          </Stack.Navigator>
+        )}
+        {/* {() =>
+          stackFactory(Detail, "Detail", {}) &&
           stackFactory(Home, "Home", {
             title: "Home",
             headerRight: () => <MessagesLink />,
             headerTitle: () => <NavIcon name="logo-instagram" size={36} />,
           })
-        }
+        } */}
       </BottomTab.Screen>
       <BottomTab.Screen name="NOTIFICATION">
-        {() =>
+        {(props) => (
+          <Stack.Navigator {...props}>
+            <Stack.Screen
+              name="Notifications"
+              component={Notifications}
+              options={{
+                title: "Notifications",
+                headerRight: () => <MessagesLink />,
+                headerTitle: () => <NavIcon name="logo-instagram" size={36} />,
+              }}
+            />
+            <Stack.Screen name="Detail" component={Detail} />
+          </Stack.Navigator>
+        )}
+        {/* {(props) =>
           stackFactory(Notifications, "Notifications", {
             title: "Notifications",
             headerRight: () => <MessagesLink />,
             headerTitle: () => <NavIcon name="logo-instagram" size={36} />,
-          })
-        }
+          }) && stackFactory(Detail, "Detail", {})
+        } */}
       </BottomTab.Screen>
       <BottomTab.Screen
         name="ADD"
@@ -88,22 +117,50 @@ export default () => {
       />
 
       <BottomTab.Screen name="PROFILE">
-        {() =>
+        {(props) => (
+          <Stack.Navigator {...props}>
+            <Stack.Screen
+              name="Profile"
+              component={Profile}
+              options={{
+                title: "Profile",
+                headerRight: () => <MessagesLink />,
+                headerTitle: () => <NavIcon name="logo-instagram" size={36} />,
+              }}
+            />
+            <Stack.Screen name="Detail" component={Detail} />
+          </Stack.Navigator>
+        )}
+        {/* {() =>
           stackFactory(Profile, "Profile", {
             title: "Profile",
             headerRight: () => <MessagesLink />,
             headerTitle: () => <NavIcon name="logo-instagram" size={36} />,
-          })
-        }
+          }) && stackFactory(Detail, "Detail", {})
+        } */}
       </BottomTab.Screen>
       <BottomTab.Screen name="SEARCH">
-        {() =>
+        {(props) => (
+          <Stack.Navigator {...props}>
+            <Stack.Screen
+              name="Search"
+              component={Search}
+              // options={{
+              //   title: "Searchhhh",
+              // headerRight: () => <MessagesLink />,
+              // headerTitle: () => <NavIcon name="logo-instagram" size={36} />,
+              // }}/>
+            />
+            <Stack.Screen name="Detail" component={Detail} />
+          </Stack.Navigator>
+        )}
+        {/* {() =>
           stackFactory(Search, "Search", {
             // title: "Searchhhh",
             // headerRight: () => <MessagesLink />,
             // headerTitle: () => <NavIcon name="logo-instagram" size={36} />,
-          })
-        }
+          }) && stackFactory(Detail, "Detail", {})
+        } */}
       </BottomTab.Screen>
     </BottomTab.Navigator>
     // </NavigationContainer>

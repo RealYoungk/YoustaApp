@@ -26,7 +26,7 @@ const View = styled.View`
 
 const Text = styled.Text``;
 
-export default ({ navigation }) => {
+export default ({ navigation, route }) => {
   const [term, setTerm] = useState("");
   const [shouldFetch, setShouldFetch] = useState(false);
 
@@ -43,5 +43,5 @@ export default ({ navigation }) => {
     headerTitle: () => <SearchBar onChange={onChange} value={term} onSubmit={onSubmit} />,
   });
 
-  return <SearchPresenter term={term} shouldFetch={shouldFetch} />;
+  return <SearchPresenter term={term} shouldFetch={shouldFetch} navigation={navigation} />;
 };
