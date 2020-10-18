@@ -195,3 +195,7 @@ react 4.x 에서 5.x로 업그레이드 되면서 강의와는 다르게 코드�
 - 16.2 Search Query<br>
 Search 컴포넌트를 Container, Presenter로 분리하였다. 컨테이너에서 onChange이벤트로 문자열 입력시 Fetch상태는 false 변경되고, onSubmit이벤트 발생 시 fetch는 true로 변경되어 SearchPresenter로 전달된다. Presenter에서는 onRefresh 비동기 함수를 작성해서 refresing을 true로 변경하고, apollo hooks를 통해서 refetch를 진행하고 데이터를 받아오면, refresh를 false로 변경한다.
 
+- 16.3 Search Photo<br>
+네비게이터로 사진을 클릭하면 Detail을 보여주는 화면 네이게이터를 구현하는 중이였다.
+문서를 참고하여 navigate와 params를 넘겨주는 방향으로 진행 하였으나, 파라미터가 제대로 들어오지 않았다. 처음에는 모듈의 버전 문제인줄 알았으나, 그게 아니라 navigation을 하위컴포넌트로 전달하는 방식으로 해결하였다. 한마디로 처음에 작동하지 않았던 이유는 다른 navigation 훅을 만들어 사용하였다. 그게 아니라 우리가 만든 tabnavigate의 param을 주어야 하기 때문에 params가 제대로 안들어온것이다. 삽질 몇시간만에 된거라 너무 행복하다..
+
