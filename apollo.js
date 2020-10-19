@@ -3,7 +3,7 @@
 // };
 
 const options = {
-  uri: "http://4978fbbae05f.ngrok.io",
+  uri: "http://be92ca636c9f.ngrok.io",
 };
 
 export default options;

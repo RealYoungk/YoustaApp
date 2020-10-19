@@ -31,7 +31,8 @@ const HeaderUserContainer = styled.View`
 `;
 
 const Bold = styled.Text`
-  font-weight: 500;
+  font-weight: 800;
+  margin-right: 5px;
 `;
 
 const Location = styled.Text`

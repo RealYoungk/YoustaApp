@@ -142,16 +142,12 @@ export default () => {
       <BottomTab.Screen name="SEARCH">
         {(props) => (
           <Stack.Navigator {...props}>
+            <Stack.Screen name="Search" component={Search} />
             <Stack.Screen
-              name="Search"
-              component={Search}
-              // options={{
-              //   title: "Searchhhh",
-              // headerRight: () => <MessagesLink />,
-              // headerTitle: () => <NavIcon name="logo-instagram" size={36} />,
-              // }}/>
+              name="Detail"
+              component={Detail}
+              options={{ title: "Photo", headerTitleAlign: "center" }}
             />
-            <Stack.Screen name="Detail" component={Detail} />
           </Stack.Navigator>
         )}
         {/* {() =>
