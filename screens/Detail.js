@@ -21,7 +21,7 @@ const Text = styled.Text``;
 
 export default ({ navigation, route }) => {
   const { loading, data } = useQuery(POST_DETAIL, { variables: { id: route.params.id } });
-  console.log(loading, data);
+  // console.log(loading, data);
   return (
     <View>{loading ? <Loader /> : data && data.seeFullPost && <Post {...data.seeFullPost} />}</View>
   );
