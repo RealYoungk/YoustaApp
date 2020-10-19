@@ -24,7 +24,7 @@ const View = styled.View`
 
 const Text = styled.Text``;
 
-export default () => {
+export default ({ navigation }) => {
   const [refreshing, setRefreshing] = useState(false);
   const { loading, data, refetch } = useQuery(FEED_QUERY);
   const refresh = async () => {
@@ -45,7 +45,9 @@ export default () => {
       {loading ? (
         <Loader />
       ) : (
-        data && data.seeFeed && data.seeFeed.map((post) => <Post key={post.id} {...post} />)
+        data &&
+        data.seeFeed &&
+        data.seeFeed.map((post) => <Post key={post.id} {...post} navigation={navigation} />)
       )}
     </ScrollView>
   );

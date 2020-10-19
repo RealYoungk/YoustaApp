@@ -10,6 +10,7 @@ import Search from "../screens/Tabs/Search/SearchContainer";
 import Detail from "../screens/Detail";
 import MessagesLink from "../components/MessagesLink";
 import NavIcon from "../components/NavIcon";
+import UserDetail from "../screens/UserDetail";
 
 const Stack = createStackNavigator();
 // const stackFactory = (initialRoute, name, customConfig) => {
@@ -32,7 +33,7 @@ export default () => {
   return (
     // <NavigationContainer>
     <BottomTab.Navigator
-      initialRouteName="Search"
+      initialRouteName="HOME"
       tabBarOptions={{
         labelPosition: "beside-icon",
         showLabel: false,
@@ -71,6 +72,7 @@ export default () => {
               }}
             />
             <Stack.Screen name="Detail" component={Detail} />
+            <Stack.Screen name="UserDetail" component={UserDetail} />
           </Stack.Navigator>
         )}
         {/* {() =>
@@ -95,6 +97,7 @@ export default () => {
               }}
             />
             <Stack.Screen name="Detail" component={Detail} />
+            <Stack.Screen name="UserDetail" component={UserDetail} />
           </Stack.Navigator>
         )}
         {/* {(props) =>
@@ -129,6 +132,7 @@ export default () => {
               }}
             />
             <Stack.Screen name="Detail" component={Detail} />
+            <Stack.Screen name="UserDetail" component={UserDetail} />
           </Stack.Navigator>
         )}
         {/* {() =>
@@ -148,6 +152,7 @@ export default () => {
               component={Detail}
               options={{ title: "Photo", headerTitleAlign: "center" }}
             />
+            <Stack.Screen name="UserDetail" component={UserDetail} />
           </Stack.Navigator>
         )}
         {/* {() =>
