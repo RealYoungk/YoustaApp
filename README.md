@@ -217,3 +217,10 @@ Search 컴포넌트를 Container, Presenter로 분리하였다. 컨테이너에�
 - 18.0 탭바 스타일 변경<br>
 그냥 리액트 문서 참고해서 헤더 변경함, 해결하지 못한 문제 : 포토 네비게이터에서 클릭하면 다른 페이지로 가는데 그 페이지의 헤더만 나타나게 하는것(그냥 setOptions({ showLabel : true })했더니 안먹음,,)
 
+- 18.1 사진선택화면 구현 1<br>
+```
+import * as Permissions from "expo-permissions";
+import * as MediaLibrary from "expo-media-library";
+```
+를 사용하여 제어권한을 가져오고 내 엘범의 사진을 가져오는것 까지 구현하였다. 가져오는 상황에서 permission, selected, loading, allphotos 상태를 사용하였다.
+
