@@ -26,12 +26,15 @@ export const ME = gql`
 
 export default ({ navigation, route }) => {
   const { loading, data } = useQuery(ME);
+  // console.log(data);
   // useEffect(() => {
   //   if (data.me) {
   //     navigation.setParams({ title: data.me.username });
   //   }
   // }, [data]);
   return (
-    <ScrollView>{loading ? <Loader /> : data && data.me && <UserProfile {...data} />}</ScrollView>
+    <ScrollView>
+      {loading ? <Loader /> : data && data.me && <UserProfile {...data.me} />}
+    </ScrollView>
   );
 };

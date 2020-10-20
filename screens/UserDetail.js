@@ -24,6 +24,12 @@ const Text = styled.Text``;
 export default ({ navigation, route }) => {
   const { loading, data } = useQuery(GET_USER, { variables: { username: route.params.username } });
   // console.log(loading, data);
+
+  navigation.setOptions({
+    title: route.params.username,
+    headerTitleAlign: "center",
+  });
+
   return (
     <ScrollView>
       {loading ? <Loader /> : data && data.seeUser && <UserProfile {...data.seeUser} />}
