@@ -1,3 +1,4 @@
+import { NavigationRouteContext } from "@react-navigation/native";
 import React from "react";
 import styled from "styled-components";
 
@@ -9,8 +10,10 @@ const View = styled.View`
 
 const Text = styled.Text``;
 
-export default () => (
-  <View>
-    <Text>Upload Photo</Text>
-  </View>
-);
+export default ({ navigation }) => {
+  return (
+    <View>
+      <Text>Upload Photo</Text>
+    </View>
+  );
+};
