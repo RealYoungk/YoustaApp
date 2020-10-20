@@ -34,7 +34,11 @@ export default ({ navigation, route }) => {
   // }, [data]);
   return (
     <ScrollView>
-      {loading ? <Loader /> : data && data.me && <UserProfile {...data.me} />}
+      {loading ? (
+        <Loader />
+      ) : (
+        data && data.me && <UserProfile {...data.me} navigation={navigation} />
+      )}
     </ScrollView>
   );
 };
