@@ -224,3 +224,6 @@ import * as MediaLibrary from "expo-media-library";
 ```
 를 사용하여 제어권한을 가져오고 내 엘범의 사진을 가져오는것 까지 구현하였다. 가져오는 상황에서 permission, selected, loading, allphotos 상태를 사용하였다.
 
+- 18.2 사진선택 2<br>
+Scroll View를 활용하여 사진첩의 사진들을 볼 수 있도록 하였다.
+
