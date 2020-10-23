@@ -236,3 +236,21 @@ TouchableOpacity를 활용하여 카메라를 앞뒤로 뒤집는 기능을 구�
 - #18.5 Saving Photo <br>
 버튼을 넣고 onPress를 이용하여 카메라를 후면,전면으로 바꾸거나 저장되도록 하였다.
 
+- #18.6 Navigating to Upload Photo<br>
+네비게이터를 이용하여 업로드 버튼을 누르면 업로드 페이지에 가고 업로드 페이지에서 사진에 대한 출력까지 하였다.
+
+- #18.7 Preparing for Upload<br>
+사진 업로드를 위해 백앤드를 손봤다. 먼저 기존까지는 정보를 요청하는데 GraphQL방식으로 요청해 왔다. 하지만 이것은 요청일때고 파일 업로드를 위해서는 REST방식으로 정보를 보내는게 좋다. 그래서 
+```
+import multer from "multer";
+
+const upload = multer({ dest: "uploads/" });
+export const uploadMiddleware = upload.single("file");
+
+export const uploadController = (req, res) => {
+  const { file } = req;
+  console.log(file);
+  res.end();
+};
+```
+multer를 이용하여 업로드를 하도록 하였다.
