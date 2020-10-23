@@ -227,3 +227,6 @@ import * as MediaLibrary from "expo-media-library";
 - 18.2 사진선택 2<br>
 Scroll View를 활용하여 사진첩의 사진들을 볼 수 있도록 하였다.
 
+- #18.3 사진찍기<br>
+expo-camera 라이브러리를 이용하여 카메라 권한을 받고 카메라 까지 작동시켰다.
+
