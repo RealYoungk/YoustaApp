@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { ActivityIndicator, Alert, Image } from "react-native";
 import styled from "styled-components";
 import useInput from "../../hooks/useInput";
 import styles from "../../styles";
 import constants from "../constants";
+import Option from "../../apollo";
 
 const Container = styled.View`
   padding: 20px;
@@ -37,20 +39,38 @@ const Text = styled.Text`
 
 export default ({ navigation, route }) => {
   const [loading, setIsLoading] = useState(false);
-  const [fileUrl, setFileUrl] = useState("");
-  const captionInput = useInput("");
-  const locationInput = useInput("");
+  const [fileUrl, setFileUrl] = useState("fileurl");
+  const photo = route.params.photo;
+  const captionInput = useInput("caption");
+  const locationInput = useInput("location");
   const handleSubmit = async () => {
     if (captionInput.value === "" || locationInput.value === "") {
       Alert.alert("All fields are required");
     }
+    const formData = new FormData();
+    const name = photo.filename;
+    const [, type] = name.split(".");
+    formData.append("file", {
+      name: photo.filename,
+      type: "image/jpeg",
+      uri: photo.uri,
+    });
+    try {
+      const {
+        data: { path },
+      } = await axios.post(`${Option.uri}/api/upload`, formData, {
+        headers: {
+          "Content-type": "multipart/from-data",
+        },
+      });
+      console.log(path);
+    } catch (e) {
+      Alert.alert("업로드 오류", "다시 시도하십시오");
+    }
   };
   return (
     <Container>
-      <Image
-        source={{ uri: route.params.photo.uri }}
-        style={{ height: 80, width: 80, marginRight: 30 }}
-      />
+      <Image source={{ uri: photo.uri }} style={{ height: 80, width: 80, marginRight: 30 }} />
       <Form>
         <STextInput
           onChangeText={captionInput.onChange}
