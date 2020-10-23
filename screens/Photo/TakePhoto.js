@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Platform, TouchableOpacity } from "react-native";
 import styled from "styled-components";
 import * as Permissions from "expo-permissions";
@@ -11,15 +11,40 @@ import { color } from "react-native-reanimated";
 import styles from "../../styles";
 
 const View = styled.View`
+  justify-content: center;
+  align-items: center;
   flex: 1;
 `;
 
 const Text = styled.Text``;
 
+const Button = styled.View`
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  border: 10px solid ${styles.lightGreyColor};
+`;
+
 export default ({ navigation }) => {
+  const cameraRef = useRef();
+  const [canTakePhoto, setCanTakePhoto] = useState(true);
   const [loading, setLoading] = useState(true);
   const [hasPermission, setHasPermission] = useState(false);
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
+  const takePhoto = async () => {
+    if (!canTakePhoto) return;
+    try {
+      setCanTakePhoto(false);
+      const { uri } = await cameraRef.current.takePictureAsync({
+        quality: 1,
+      });
+      const asset = await MediaLibrary.createAssetAsync(uri);
+      console.log(asset);
+    } catch (e) {
+      console.log(e);
+      setCanTakePhoto(true);
+    }
+  };
   const askPermission = async () => {
     try {
       const { status } = await Permissions.askAsync(Permissions.CAMERA);
@@ -52,25 +77,31 @@ export default ({ navigation }) => {
       {loading ? (
         <Loader />
       ) : hasPermission ? (
-        <Camera
-          type={cameraType}
-          style={{
-            justifyContent: "flex-end",
-            padding: 10,
-            width: constants.width,
-            height: constants.height / 2,
-          }}
-        >
-          <TouchableOpacity onPress={toggleType}>
-            {/* <View> */}
-            <Ionicons
-              name={Platform.OS === "ios" ? "ios-reverse-camera" : "md-reverse-camera"}
-              size={28}
-              color={styles.blackColor}
-            />
-            {/* </View> */}
-          </TouchableOpacity>
-        </Camera>
+        <>
+          <Camera
+            ref={cameraRef}
+            type={cameraType}
+            style={{
+              justifyContent: "flex-end",
+              padding: 10,
+              width: constants.width,
+              height: constants.height / 2,
+            }}
+          >
+            <TouchableOpacity onPress={toggleType}>
+              <Ionicons
+                name={Platform.OS === "ios" ? "ios-reverse-camera" : "md-reverse-camera"}
+                size={28}
+                color={styles.blackColor}
+              />
+            </TouchableOpacity>
+          </Camera>
+          <View>
+            <TouchableOpacity onPress={takePhoto}>
+              <Button />
+            </TouchableOpacity>
+          </View>
+        </>
       ) : null}
     </View>
   );
