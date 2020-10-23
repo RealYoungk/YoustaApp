@@ -27,8 +27,8 @@ const PhotoTabs = () => {
         },
       }}
     >
-      <Tab.Screen name="사진 선택" component={SelectPhoto} />
       <Tab.Screen name="사진" component={TakePhoto} />
+      <Tab.Screen name="사진 선택" component={SelectPhoto} />
     </Tab.Navigator>
   );
 };

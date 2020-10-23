@@ -20,6 +20,7 @@
     "apollo-cache-persist": "^0.1.1",
     "expo": "~39.0.2",
     "expo-asset": "^8.2.0",
+    "expo-camera": "~9.0.0",
     "expo-facebook": "~9.0.0",
     "expo-font": "^8.3.0",
     "expo-media-library": "~9.2.1",

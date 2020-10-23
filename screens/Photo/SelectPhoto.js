@@ -5,6 +5,7 @@ import * as MediaLibrary from "expo-media-library";
 import Loader from "../../components/Loader";
 import { Image, ScrollView } from "react-native";
 import constants from "../constants";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const View = styled.View`
   /* justify-content: center;
@@ -19,6 +20,9 @@ export default ({ navigation }) => {
   const [hasPermission, setHasPermission] = useState(false);
   const [selected, setSelected] = useState();
   const [allPhotos, setAllPhotos] = useState();
+  const changeSelected = (photo) => {
+    setSelected(photo);
+  };
   const getPhotos = async () => {
     try {
       const { assets } = await MediaLibrary.getAssetsAsync();
@@ -63,11 +67,16 @@ export default ({ navigation }) => {
 
           <ScrollView contentContainerStyle={{ flexDirection: "row" }}>
             {allPhotos.map((photo) => (
-              <Image
-                key={photo.id}
-                source={{ uri: photo.uri }}
-                style={{ width: constants.width / 3, height: constants.height / 6 }}
-              />
+              <TouchableOpacity key={photo.id} onPress={() => changeSelected(photo)}>
+                <Image
+                  source={{ uri: photo.uri }}
+                  style={{
+                    width: constants.width / 3,
+                    height: constants.height / 6,
+                    opacity: photo.id === selected.id ? 0.5 : 1,
+                  }}
+                />
+              </TouchableOpacity>
             ))}
           </ScrollView>
         </>
