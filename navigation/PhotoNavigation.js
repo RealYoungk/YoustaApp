@@ -39,7 +39,7 @@ export default () => {
   return (
     <Stack.Navigator initialRouteName={"PhotoTabs"} headerMode={"screen"}>
       <Stack.Screen name="PhotoTabs" component={PhotoTabs} />
-      <Stack.Screen name="UploadPhoto" component={UploadPhoto} options={{ headerShown: false }} />
+      <Stack.Screen name="UploadPhoto" component={UploadPhoto} options={{ headerTitle: false }} />
     </Stack.Navigator>
   );
 };
