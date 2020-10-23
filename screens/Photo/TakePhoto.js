@@ -39,7 +39,7 @@ export default ({ navigation }) => {
         quality: 1,
       });
       const asset = await MediaLibrary.createAssetAsync(uri);
-      console.log(asset);
+      navigation.navigate("UploadPhoto", { photo: asset });
     } catch (e) {
       console.log(e);
       setCanTakePhoto(true);
@@ -97,7 +97,7 @@ export default ({ navigation }) => {
             </TouchableOpacity>
           </Camera>
           <View>
-            <TouchableOpacity onPress={takePhoto}>
+            <TouchableOpacity onPress={takePhoto} disabled={!canTakePhoto}>
               <Button />
             </TouchableOpacity>
           </View>

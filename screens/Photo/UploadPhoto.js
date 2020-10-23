@@ -10,10 +10,11 @@ const View = styled.View`
 
 const Text = styled.Text``;
 
-export default ({ navigation }) => {
+export default ({ navigation, route }) => {
+  console.log(route);
   return (
     <View>
-      <Text>Upload Photo</Text>
+      <Text>업로드 가능 {route.params.photo.uri}</Text>
     </View>
   );
 };
