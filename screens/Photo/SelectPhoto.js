@@ -3,17 +3,18 @@ import styled from "styled-components";
 import * as Permissions from "expo-permissions";
 import * as MediaLibrary from "expo-media-library";
 import Loader from "../../components/Loader";
-import { Image } from "react-native";
+import { Image, ScrollView } from "react-native";
+import constants from "../constants";
 
 const View = styled.View`
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
   flex: 1;
 `;
 
 const Text = styled.Text``;
 
-export default () => {
+export default ({ navigation }) => {
   const [loading, setLoading] = useState(true);
   const [hasPermission, setHasPermission] = useState(false);
   const [selected, setSelected] = useState();
@@ -32,9 +33,10 @@ export default () => {
   const askPermission = async () => {
     try {
       const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+
       if (status === "granted") {
         setHasPermission(true);
-        getPhotos();
+        await getPhotos();
       }
     } catch (e) {
       console.log(e);
@@ -53,9 +55,22 @@ export default () => {
       {loading ? (
         <Loader />
       ) : hasPermission ? (
-        <View>
-          <Image style={{ width: 100, height: 100 }} source={{ uri: selected.uri }} />
-        </View>
+        <>
+          <Image
+            style={{ width: constants.width, height: constants.height / 2 }}
+            source={{ uri: selected.uri }}
+          />
+
+          <ScrollView contentContainerStyle={{ flexDirection: "row" }}>
+            {allPhotos.map((photo) => (
+              <Image
+                key={photo.id}
+                source={{ uri: photo.uri }}
+                style={{ width: constants.width / 3, height: constants.height / 6 }}
+              />
+            ))}
+          </ScrollView>
+        </>
       ) : null}
     </View>
   );
